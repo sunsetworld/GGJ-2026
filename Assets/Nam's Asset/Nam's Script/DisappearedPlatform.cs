@@ -1,13 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
 
 public class DisappearedPlatform : MonoBehaviour
 {
    private SpriteRenderer _spriteRenderer;
+   [Header("Debug")]
+   public bool disableMaskVision;
 
    private void Awake()
    {
@@ -16,14 +13,15 @@ public class DisappearedPlatform : MonoBehaviour
 
    void Update()
    {
-       if (MaskVision.maskOn == true)
+       if (disableMaskVision) return;
+       switch (MaskVision.maskOn)
        {
-           _spriteRenderer.enabled = true;
-       }
-
-       if (MaskVision.maskOn == false)
-       {
-           _spriteRenderer.enabled = false;
+           case true:
+               _spriteRenderer.enabled = true;
+               break;
+           case false:
+               _spriteRenderer.enabled = false;
+               break;
        }
    }
 }
