@@ -8,10 +8,12 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public float deathPosY = -10f;
     public bool playerDied;
+    PlayerDeath playerDeath;
     // Start is called before the first frame update
     void Start()
     {
         checkpoint = player.transform.position;
+        playerDeath = player.GetComponent<PlayerDeath>();
     }
 
     private void Update()
@@ -28,11 +30,7 @@ public class GameManager : MonoBehaviour
         playerDied = false;
         yield return new WaitForSeconds(3f);
         player.gameObject.SetActive(true);
-        ResetPlayerToCheckpoint();
-    }
-    
-    void ResetPlayerToCheckpoint()
-    {
+        playerDeath.ResetPlayerLives();
         player.transform.position = checkpoint;
     }
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -35,9 +33,9 @@ public class TriggerZone : MonoBehaviour
    private void OnTriggerExit2D(Collider2D other)
    {
       if (alreadyExited)
-         {
+      {
          return;
-         }
+      }
       onTriggerExit?.Invoke();
       if (!string.IsNullOrEmpty(collisionTag) && !other.CompareTag(collisionTag))
       {

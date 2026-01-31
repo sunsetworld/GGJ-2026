@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class MaskVision : MonoBehaviour
@@ -12,36 +11,22 @@ public class MaskVision : MonoBehaviour
     [SerializeField] private bool onCooldown = false;
     [SerializeField] private Slider slider;
     private bool ok = true;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (maskOn == true)
+        if (maskOn)
         {
             // Mask on Action
-            if (CD > 0)
-            {
-                CD -= Time.deltaTime;
-            }
+            if (CD > 0) CD -= Time.deltaTime;
         }
         else
         {
             // Mask off Action
         }
-        if (Input.GetKeyDown(KeyCode.Q) && onCooldown == false)
-        {
-            maskOn = true;
-        }
+        if (Input.GetKeyDown(KeyCode.Q) && !onCooldown) maskOn = true;
         slider.value = CD/maxCD;
-        if (CD <= 0 && ok)
-        {
-            StartCoroutine(MaskCoolDown());
-        }
+        if (CD <= 0 && ok) StartCoroutine(MaskCoolDown());
     }
     IEnumerator MaskCoolDown()
     {
@@ -53,6 +38,5 @@ public class MaskVision : MonoBehaviour
         maskOn = false;
         onCooldown = false;
         ok = true;
-
     }
 }
