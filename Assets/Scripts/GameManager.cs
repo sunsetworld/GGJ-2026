@@ -1,28 +1,39 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public Vector2 checkpoint;
-    GameObject player;
+    public GameObject player;
+    public float deathPosY = -10f;
+    public bool playerDied;
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         checkpoint = player.transform.position;
     }
 
-    public IEnumerator Respawn()
+    private void Update()
+    {
+        if (player.transform.position.y <= deathPosY || playerDied)
+        {
+            StartCoroutine(Respawn());
+        }
+    }
+
+    IEnumerator Respawn()
     {
         player.gameObject.SetActive(false);
+        playerDied = false;
         yield return new WaitForSeconds(3f);
+        player.gameObject.SetActive(true);
         ResetPlayerToCheckpoint();
     }
     
     void ResetPlayerToCheckpoint()
     {
         player.transform.position = checkpoint;
-        player.gameObject.SetActive(true);
     }
 
     public void UpdateCheckPoint(Vector2 newCheckpoint)

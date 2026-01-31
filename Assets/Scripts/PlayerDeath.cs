@@ -1,21 +1,21 @@
+using System;
 using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-    public float deathPosY = -10f;
-    GameManager gm;
+    public int playerLives = 3;
+    private GameManager gm;
 
     private void Start()
     {
         gm = FindObjectOfType<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (transform.position.y <= deathPosY)
+        if (playerLives <= 0)
         {
-            StartCoroutine(gm.Respawn());
+            gm.playerDied = true;
         }
     }
 }
