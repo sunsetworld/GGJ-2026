@@ -191,9 +191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60d0c908f4cfe946b1d1431a7038297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CD: 5
+  CD: 10
   cooldownTime: 3
-  maxCD: 5
+  maxCD: 10
   onCooldown: 0
   slider: {fileID: 0}
   anim: {fileID: 7813082439550900245}

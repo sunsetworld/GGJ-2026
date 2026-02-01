@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,11 @@ public class MaskVision : MonoBehaviour
     [SerializeField] private Slider slider;
     private bool ok = true;
     public Animator anim;
+
+    private void Start()
+    {
+        if (slider == null) slider = FindObjectOfType<Slider>();
+    }
 
     // Update is called once per frame
     void Update()
