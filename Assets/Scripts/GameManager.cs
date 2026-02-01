@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     public bool playerDied;
     PlayerDeath playerDeath;
     CinemachineVirtualCamera vcam;
+
+    public bool hasFinishedGame;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (hasFinishedGame) StartCoroutine(GameOver());
         if (player == null) return;
         if (player.transform.position.y <= deathPosY || playerDied)  
             StartCoroutine(Respawn());
@@ -34,6 +38,12 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         player = Instantiate(playerToSpawn, checkpoint, Quaternion.identity);
         vcam.Follow = player.transform;
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(0);
     }
 
     public void UpdateCheckPoint(Vector2 newCheckpoint)
