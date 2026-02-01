@@ -18,10 +18,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (player.transform.position.y <= deathPosY || playerDied)
-        {
+        if (player.transform.position.y <= deathPosY || playerDied)  
             StartCoroutine(Respawn());
-        }
     }
 
     IEnumerator Respawn()

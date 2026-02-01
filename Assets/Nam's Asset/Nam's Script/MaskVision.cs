@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 public class MaskVision : MonoBehaviour
 {
     //[SerializeField] private Cooldown cooldown;
@@ -11,6 +12,7 @@ public class MaskVision : MonoBehaviour
     [SerializeField] private bool onCooldown = false;
     [SerializeField] private Slider slider;
     private bool ok = true;
+    public Animator anim;
 
     // Update is called once per frame
     void Update()
@@ -18,11 +20,13 @@ public class MaskVision : MonoBehaviour
         if (maskOn)
         {
             // Mask on Action
+            anim.SetBool("maskOn", maskOn);
             if (CD > 0) CD -= Time.deltaTime;
         }
         else
         {
             // Mask off Action
+            anim.SetBool("maskOn", maskOn);
         }
         if (Input.GetKeyDown(KeyCode.Q) && !onCooldown) maskOn = true;
         slider.value = CD/maxCD;
@@ -33,6 +37,7 @@ public class MaskVision : MonoBehaviour
         ok = false;
         maskOn = false;
         onCooldown = true;
+        Debug.Log("CD: " + CD);
         yield return new WaitForSeconds(cooldownTime);
         CD = maxCD;
         maskOn = false;
