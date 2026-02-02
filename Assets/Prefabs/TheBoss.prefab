@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossHealth: 3
+  enemyDestroy: {fileID: 8300000, guid: ba22ff1f2a9ac493688c4d8fd1e502d9, type: 3}
 --- !u!61 &2505957910839912946
 BoxCollider2D:
   m_ObjectHideFlags: 0

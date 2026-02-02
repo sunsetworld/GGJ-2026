@@ -15,10 +15,10 @@ public class EnemyMask : MonoBehaviour
         switch (MaskVision.maskOn)
         {
             case true:
-                _spriteRenderer.enabled = false;
+                _spriteRenderer.enabled = true;
                 break;
             case false:
-                _spriteRenderer.enabled = true;
+                _spriteRenderer.enabled = false;
                 break;
         }
     }

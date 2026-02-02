@@ -17,10 +17,10 @@ public class DisappearedPlatform : MonoBehaviour
        switch (MaskVision.maskOn)
        {
            case true:
-               _spriteRenderer.enabled = true;
+               _spriteRenderer.enabled = false;
                break;
            case false:
-               _spriteRenderer.enabled = false;
+               _spriteRenderer.enabled = true;
                break;
        }
    }

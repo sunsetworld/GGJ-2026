@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public bool playerDied;
     PlayerDeath playerDeath;
     CinemachineVirtualCamera vcam;
+    HUD hud;
 
     public bool hasFinishedGame;
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
         checkpoint = player.transform.position;
         playerDeath = player.GetComponent<PlayerDeath>();
         vcam = FindObjectOfType<CinemachineVirtualCamera>();
+        hud = FindObjectOfType<HUD>();
     }
 
     private void Update()
@@ -38,6 +40,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         player = Instantiate(playerToSpawn, checkpoint, Quaternion.identity);
         vcam.Follow = player.transform;
+        hud.UpdatePlayerForUI(player);
     }
 
     IEnumerator GameOver()

@@ -6511,6 +6511,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7705785835816663805, guid: c55ae18445dbf4b3abd29db0877234d6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8529068964647300908, guid: c55ae18445dbf4b3abd29db0877234d6, type: 3}
       propertyPath: slider
       value: 
@@ -6729,6 +6733,10 @@ PrefabInstance:
     - target: {fileID: 4889010943290970640, guid: 2df4cf33f0374406abf33264d71f3ea9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059927325396354972, guid: 2df4cf33f0374406abf33264d71f3ea9, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
